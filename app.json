@@ -1,0 +1,267 @@
+{
+	"id": "nl.regoor.wirelesskeypad",
+	"version": "0.0.1",
+	"compatibility": "0.x || 1.x",
+	"name":
+	{
+		"en": "Wireless Keypad",
+		"nl": "Wireless Keypad"
+	},
+	"description":
+	{
+		"en": "Wireless Keypad system using an ESP device.",
+		"nl": "Wireless Keypad systeem middels een ESP apparaat."
+	},
+	"author":
+	{
+		"name": "Serge Regoor",
+		"email": "serge@regoor.nl"
+	},
+	"permissions": [],
+	"flow":
+	{
+		"triggers": [
+			{
+				"id": "access",
+				"title":
+				{
+					"nl": "Succesvolle invoer",
+					"en": "Successful entry"
+				},
+				"fluidArgs": true,
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_uri=homey:app:nl.regoor.wirelesskeypad&driver_id=wirelesskeypad-wifi"
+					}
+				]
+	   		},
+			{
+				"id": "access_code",
+				"title":
+				{
+					"nl": "Toegangscode invoer",
+					"en": "Access code entry"
+				},
+				"fluidArgs": true,
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_uri=homey:app:nl.regoor.wirelesskeypad&driver_id=wirelesskeypad-wifi"
+					},
+					{
+						"name": "keyname",
+						"type": "autocomplete"
+					}
+				]
+	   		},
+	   		{
+	   			"id": "invalid_code",
+	   			"title":
+	   			{
+	   				"nl": "Ongeldige invoer",
+	   				"en": "Invalid entry"
+	   			},
+				"fluidArgs": true,
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_uri=homey:app:nl.regoor.wirelesskeypad&driver_id=wirelesskeypad-wifi"
+					}
+				]
+	   		},
+	   		{
+	   			"id": "tamper",
+	   			"title":
+	   			{
+	   				"nl": "Waarschuwing",
+	   				"en": "Warning"
+	   			},
+				"fluidArgs": true,
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_uri=homey:app:nl.regoor.wirelesskeypad&driver_id=wirelesskeypad-wifi"
+					}
+				]
+	   		},
+	   		{
+	   			"id": "offline",
+	   			"title":
+	   			{
+	   				"nl": "Onbereikbaar",
+	   				"en": "Unavailable"
+	   			},
+				"fluidArgs": true,
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_uri=homey:app:nl.regoor.wirelesskeypad&driver_id=wirelesskeypad-wifi"
+					}
+				]
+	   		}
+		],
+		"actions": [
+			{
+	   			"id": "enable",
+	   			"title":
+	   			{
+	   				"nl": "Activeer",
+	   				"en": "Enable"
+	   			},
+				"fluidArgs": true,
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_uri=homey:app:nl.regoor.wirelesskeypad&driver_id=wirelesskeypad-wifi"
+					}
+				]
+			},
+			{
+	   			"id": "disable",
+	   			"title":
+	   			{
+	   				"nl": "Deactiveer",
+	   				"en": "Disable"
+	   			},
+				"fluidArgs": true,
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_uri=homey:app:nl.regoor.wirelesskeypad&driver_id=wirelesskeypad-wifi"
+					}
+				]
+	   		},
+			{
+	   			"id": "buzzer",
+	   			"title":
+	   			{
+	   				"nl": "Zoemer",
+	   				"en": "Buzzer"
+	   			},
+				"fluidArgs": true,
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"filter": "driver_uri=homey:app:nl.regoor.wirelesskeypad&driver_id=wirelesskeypad-wifi"
+					},
+					{
+						"name": "buzzertype",
+						"type": "autocomplete"
+					}
+				]
+	   		}
+		]
+	},
+	"drivers": [
+		{
+			"id": "wirelesskeypad-wifi",
+			"name":
+			{
+				"en": "Wifi Keypad",
+				"nl": "Wifi Keypad"
+			},
+			"images":
+			{
+				"large": "assets/keypad.svg",
+				"small": "assets/keypad.svg"
+			},
+			"class": "other",
+			"capabilities": [],
+		   	"pair": [
+				{
+					"id": "start"
+				}
+			],
+			"settings": [
+				{
+					"type": "group",
+					"label":
+					{
+						"nl": "Instellingen"
+					},
+					"children": [
+						{
+							"id": "enableDevice",
+							"type": "checkbox",
+							"label":
+							{
+								"nl": "Apparaat is actief",
+								"en": "Device is active"
+							},
+							"value": true
+						},
+						{
+							"id": "checkInTimeOutMinutes",
+							"type": "number",
+							"label":
+							{
+								"nl": "Check-in time-out in minuten",
+								"en": "Check-in time-out in minutes"
+							},
+							"value": 60
+						},
+						{
+							"id": "invalidCodeTimeOutMinutes",
+							"type": "number",
+							"label":
+							{
+								"nl": "Tamper time-out in minuten",
+								"en": "Tamper time-out in minutes"
+							},
+							"value": 10
+						},
+						{
+							"id": "invalidCodeTamperThreshold",
+							"type": "number",
+							"label":
+							{
+								"nl": "Aantal foute codes voor tamper",
+								"en": "Number of invalid codes before tamper"
+							},
+							"value": 5
+						},
+						{
+							"id": "ipAddress",
+							"type": "label",
+							"label":
+							{
+								"nl": "IP adres",
+								"en": "IP address"
+							},
+							"value": ""
+						},
+						{
+							"id": "macAddress",
+							"type": "label",
+							"label":
+							{
+								"nl": "MAC adres",
+								"en": "MAC address"
+							},
+							"value": ""
+						},
+						{
+							"id": "lastCheckIn",
+							"type": "label",
+							"label":
+							{
+								"nl": "Laatste check-in",
+								"en": "Last check-in"
+							},
+							"value": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}

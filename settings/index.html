@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+		<script type="text/javascript" src="/manager/webserver/assets/js/jquery.js"></script>
+		<script type="text/javascript" src="../assets/client-common.js"></script>
+		<script type="text/javascript" src="client-settings.js"></script>
+		<link type="text/css" rel="stylesheet" href="../assets/styles.css" media="screen" />
+    </head>
+    <body>
+    	<h1 rel-localized="app_title"></h1>
+    	
+    	<fieldset id="privateKeyContainer">
+    		<legend rel-localized="settings.privatekey.title"></legend>
+    		<p>
+    			<span rel-localized="settings.privatekey.yourkeyis"></span>
+    			<span style="font-weight:bold;" id="fieldPrivateKey"></span>
+    			<button class="copyToClipboard" rel-description="Je private key" rel-selector="#fieldPrivateKey" rel-localized-for="title" rel-localized="settings.privatekey.copytoclipboard"></button>
+    		</p>
+    		<p>
+    			<span rel-localized="settings.privatekey.explanation"></span>
+    			<a href="#" class="setCustomPrivateKey" rel-localized="settings.privatekey.setcustom"></a>
+    		</p>
+    	</fieldset>
+    	
+    	<div id="accessKeyListTemplate" style="display:none;">
+	    	<fieldset>
+	    		<legend class="keyTypeText" rel-text="list.header">Title</legend>
+	    		<p class="keyTypeText" rel-text="list.explanation"></p>
+		    	<div class="keyList">
+		        	<div class="row head">
+		        		<div class="col"></div>
+		        		<div class="col">Actief</div>
+		        		<div class="col" class="keyTypeText" rel-text="list.keyColumn">Key</div>
+		        		<div class="col" class="keyTypeText" rel-text="list.descriptionColumn">Description</div>
+		        	</div>
+		    	</div>
+		    	
+		    	<button class="addButton keyTypeText" rel-text="list.addButton">Add</button>
+		    	<br class="clear" />
+	    	</fieldset>
+    	</div>
+    	
+		<div id="accessKeyFormTemplate" style="display:none;">
+            <div class="field row">
+                <label for="fieldCode" class="keyTypeText" rel-text="edit.keyField">Key</label>
+                <input type="text" id="fieldCode" class="propertyField firstFocus" rel-property="code" value="" />
+            </div>
+            <div class="field row">
+                <label for="fieldDescription" class="keyTypeText" rel-text="edit.descriptionField">Description</label>
+                <input type="text" id="fieldDescription" class="propertyField" rel-property="description" value="" />
+            </div>
+             <div class="field row checkbox">
+            	<input type="checkbox" id="fieldIsActive" style="width:auto;" class="propertyField" rel-property="isActive"/>
+            	<label for="fieldIsActive">Actief</label>
+            </div>
+        	
+        	<button class="saveButton right" rel-localized="settings.accesskey_edit.savebutton">Bewaren</button>
+        	<button class="closePopup right" rel-localized="settings.accesskey_edit.cancelbutton">Annuleren</button>
+    	</div>
+    	
+    	<div id="setCustomPrivateKeyTemplate" style="display:none;">
+    		<p rel-localized="settings.privatekey.custom_explanation1"></p>
+    		<p rel-localized="settings.privatekey.custom_explanation2" style="font-weight:bold;"></p>
+            <div class="field row">
+                <label for="fieldNewPrivateKey" rel-localized="settings.privatekey.custom_newkey">New</label>
+                <input type="text" id="fieldNewPrivateKey" class="firstFocus" value="" />
+            </div>
+        	
+        	<button class="saveButton right" rel-localized="settings.privatekey.custom_savebutton">Bewaren</button>
+        	<button class="closePopup right" rel-localized="settings.privatekey.custom_cancelbutton">Annuleren</button>
+    	</div>
+    </body>
+</html>    	

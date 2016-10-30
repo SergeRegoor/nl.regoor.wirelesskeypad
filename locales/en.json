@@ -1,0 +1,110 @@
+{
+	"app_title": "Wireless Keypad",
+	
+	"yes": "Yes",
+	"no": "No",
+	
+	"buzzer": {
+		"armed": "Alarm activated",
+		"disarmed": "Alarm off",
+		"acknowledged": "Confirmed",
+		"failed": "Failed",
+		"keypressed": "Key press"
+	},
+	
+	"clipboard_value_copied": "The value has been copied to your clipboard.",
+	"clipboard_xxxxx_copied": "has been copied to your clipboard.",
+	
+	"settings": {
+		"accesskey_type": {
+			"keypad": {
+				"singular_description": "Keypad entry code",
+				"list_header": "Keypad entry codes",
+				"list_explanation": "You can manage the entry codes of your keypad in the list below. It is advisable to add a unique entry code for each person. It\"s also possible to add multiple entry codes for each person, for example to use different functions in your flows.",
+				"list_keycolumn": "Entry code",
+				"list_descriptioncolumn": "Description",
+				"list_addbutton": "Add entry code",
+				"edit_keyfield": "Keypad entry code",
+				"edit_descriptionfield": "Description of the code (i.e. the user)"
+			}
+		},
+		
+		"accesskey_list": {
+			"editbutton": "Edit",
+			"deletebutton": "Delete",
+			"confirmdelete": "Are you sure you want to delete the entry code [code] ([description])?"
+		},
+		
+		"accesskey_edit": {
+			"savebutton": "Save",
+			"cancelbutton": "Cancel",
+			"error_code_length": "Code must contain at least 4 characters.",
+			"error_description_length": "No description specified.",
+			"error_cose_exists": "The code already exists."
+		},
+		
+		"privatekey": {
+			"title": "Private key",
+			"yourkeyis": "Your private key is ",
+			"yourkey": "Your private key",
+			"copytoclipboard": "Copy to clipboard",
+			"explanation": "You use your private key when connecting your Wireless Keypad to your Homey. Follow the explained steps when adding your device.",
+			"setcustom": "Set custom private key",
+			"custom_explanation1": "Attention! When you set your own custom private key, the Wireless Keypads you have connected before will not function anymore. In that case you will need to reset and re-add the Wireless Keypads.",
+			"custom_explanation2": "Do not use a password you use elsewhere for your private key! Your private key will be visible on this settings page.",
+			"custom_newkey": "Nieuwe private key",
+			"custom_savebutton": "Save",
+			"custom_cancelbutton": "Cancel",
+			"custom_error_length": "Your new private key must contain at least 5 characters."
+		}
+	},
+	
+	"pair": {
+		"message_start_pairing": "Homey is listening to the messages of the Wireless Keypad.",
+		"message_finish_pairing": "The Wireless Keypad has connected, and has been configured. The device will be added to Homey.",
+		"message_finish_existing": "The existing Wireless Keypad has been re-configured.",
+		"message_timeout": "Connecting is taking too long, and has been cancelled.",
+		"message_existing_device": "Device already known in Homey, but will be configured.",
+		"message_configuring_device": "The device has been found, and is being configured...",
+		"message_connection_error": "Error during communication with device:",
+		"message_malformed_error": "Device returned malformed data. Please try again.",
+		"message_configuration_error": "Configuratie of the device failed. Error: ",
+		
+		"button_next": "Next",
+		"button_start": "Back to start",
+		"button_tryagain": "Try again",
+		"button_trouble": "It does not work",
+		"button_resetwifi": "Reset wifi",
+		
+		"page_start_title": "Configure Wireless Keypad",
+		"page_start_explanation1": "The Wireless Keypad is not a device readily for sale, but you need to assembly it (or have it done for you).",
+		"page_start_explanation2": "Visit the <a class=\"newWindow\" href=\"https://github.com\">project page on Github</a> for instructions, and which components you need.<br/>The total price of the Wireless Keypad is between &euro;13 and &euro;25 (without a case).",
+		"page_start_explanation3": "In the next step we will add the Wireless Keypad to your wifi network.<br/>Have you done so already? <a href=\"#\" class=\"pageButton\" rel-step=\"Keypad\">Please continue here</a>.",
+		
+		"page_connectwifi_title": "Connect to wifi",
+		"page_connectwifi_explanation1": "<li>First, you will have to connect your Wireless Keypad to your wifi network. Note: this needs to be the same network as the network you\"re Homey is connected to.</li><li>Power up your Wireless Keypad using UDB or batteries. Wait until you hear a short tone from the buzzer.</li><li>Connect your computer, tablet or smartphone to the wifi network \"Wireless Keypad config\".</li><li>A browser will start automatically, and connect with the Wireless Keypad. This can take up to a minute. Does your browser not connect? Open the address <a href=\"http://192.168.4.1\" class=\"newWindow\">http://192.168.4.1</a> manually.</li><li>Click on \"Configure WiFi\". Select your wifi network, and fill in the password for your wifi network.</li><li>Fill in the field \"private key\" with your private key, mentioned below. Click on \"Save\".</li><li>Wait until your computer/tablet/smartphone restored connection to your regular wifi network, or restore it manually.</li>",
+		"page_connectwifi_privatekey": "Private key",
+		"page_connectwifi_yourprivatekeyis": "Your private key is",
+		"page_connectwifi_copytoclipboard": "Copy to clipboard",
+		
+		"page_wifitrouble_title": "Solve wifi problems",
+		"page_wifitrouble_explanation1": "If you can\"t connect your Wireless Keypad, there can be multiple reaons:",
+		"page_wifitrouble_explanation2": "<li>Your Wireless Keypad does not have a wifi connection (anymore);</li><li>Your private key has been changed (for example because the app has been re-installed);</li>",
+		"page_wifitrouble_explanation3": "If you reboot the Wireless Keypad (power off, and on again) you hear a short tone immediately. If you can\"t hear a longer tone after 60 seconds,, the keypad has <strong>not connected</strong> to your wifi network. Reset the device and configure again.",
+		"page_wifitrouble_explanation4": "Reset of Wireless Keypad",
+		"page_wifitrouble_explanation5": "By performing a reset you can re-connect the Wireless Keypad to your wifi network, and you can re-enter your private key.",
+		"page_wifitrouble_explanation6": "<li>Enter the code \"73738\", followed by a pound (\"#\").</li><li>You will hear multiple tones which confirms the reset has been done.</li><li>Click on the \"Try again\" button below to follow the steps to re-configure your Wireless Keypad.</li>",
+		
+		"page_keypad_title": "Keypad configuration",
+		"page_keypad_explanation1": "<li>Enter the code \"46639\", followed by a pound (\"#\").</li><li>You will hear a tone, that will be repeated every 3 seconds. At every tone the Wireless Keypad will send a message to Homey.</li><li>Click on the button \"Next\" to have Homey listen to these messages.</li>",
+		"page_keypad_explanation2": "Note: you can cancel the messages from the Wireless Keypad by pressing the pound key.",
+		
+		"page_keypadtrouble_title": "Solve keypad problems",
+		"page_keypadtrouble_explanation1": "If your Wireless Keypad is connected to your wifi network, but you can\"t connect the keypad to your Homey, it\"s possible your network is blocking the messages between the keypad and your Homey.",
+		"page_keypadtrouble_explanation2": "Solve network problems",
+		"page_keypadtrouble_explanation3": "<li>Make sure your firewall or router allows \"UDP multicasting\".</li><li>Open UDP port 60505 in your firewall, but only for your local network.</li><li>Open TCP port 60506 in your firewall, but only for your local network.</li>",
+		
+		"page_startpairing_title": "Connect",
+		"page_startpairing_explanation": "The pairing process has been started. You can review the progress below."
+	}
+}

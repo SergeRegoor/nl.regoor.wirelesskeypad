@@ -1,0 +1,110 @@
+{
+	"app_title": "Wireless Keypad",
+	
+	"yes": "Ja",
+	"no": "Nee",
+	
+	"buzzer": {
+		"armed": "Alarm geactiveerd",
+		"disarmed": "Alarm uitgezet",
+		"acknowledged": "Bevestigd",
+		"failed": "Mislukt",
+		"keypressed": "Toets"
+	},
+	
+	"clipboard_value_copied": "De waarde is naar je klembord gekopieerd.",
+	"clipboard_xxxxx_copied": "is naar je klembord gekopieerd.",
+	
+	"settings": {
+		"accesskey_type": {
+			"keypad": {
+				"singular_description": "Keypad toegangscode",
+				"list_header": "Keypad toegangscodes",
+				"list_explanation": "In onderstaande lijst beheer je de toegangscodes van je keypad (codepaneel). Het is aan te raden om voor elk persoon een unieke toegangscode aan te maken. Het is ook mogelijk om meerdere codes per persoon aan te maken, bijvoorbeeld als je meerdere functies per persoon wilt kunnen koppelen.",
+				"list_keycolumn": "Toegangscode",
+				"list_descriptioncolumn": "Omschrijving",
+				"list_addbutton": "Keypad toegangscode toevoegen",
+				"edit_keyfield": "Keypad toegangscode",
+				"edit_descriptionfield": "Omschrijving van de code (bijv de gebruiker)"
+			}
+		},
+		
+		"accesskey_list": {
+			"editbutton": "Wijzig",
+			"deletebutton": "Verwijder",
+			"confirmdelete": "Weet je zeker dat je de toegangscode [code] ([description]) wilt verwijderen?"
+		},
+		
+		"accesskey_edit": {
+			"savebutton": "Bewaren",
+			"cancelbutton": "Annuleren",
+			"error_code_length": "Code moet minimaal 4 karakters bevatten.",
+			"error_description_length": "Geen omschrijving opgegeven.",
+			"error_cose_exists": "De code bestaat reeds."
+		},
+		
+		"privatekey": {
+			"title": "Private key",
+			"yourkeyis": "Je private key is ",
+			"yourkey": "Je private key",
+			"copytoclipboard": "Kopieer naar klembord",
+			"explanation": "Je gebruikt je private key bij het koppelen van je Wireless Keypad aan je Homey. Volg de uitleg bij het toevoegen van je apparaat.",
+			"setcustom": "Eigen private key instellen.",
+			"custom_explanation1": "Let op! Wanneer je je eigen private key gaat instellen, zullen je reeds gekoppelde Wireless Keypads niet meer functioneren. In dat geval zul je de Wireless Keypads moeten resetten en opnieuw koppelen.",
+			"custom_explanation2": "Gebruik niet een wachtwoord voor je private key die je elders gebruikt! Je private key wordt zichtbaar op deze instellingen pagina.",
+			"custom_newkey": "Nieuwe private key",
+			"custom_savebutton": "Bewaren",
+			"custom_cancelbutton": "Annuleren",
+			"custom_error_length": "Je nieuwe private key moet minimaal 5 karakters bevatten."
+		}
+	},
+	
+	"pair": {
+		"message_start_pairing": "Homey luistert naar de berichten van de Wireless Keypad.",
+		"message_finish_pairing": "De Wireless Keypad is gekoppeld, en ingesteld. Apparaat wordt toegevoegd aan Homey.",
+		"message_finish_existing": "De bestaande Wireless Keypad is opnieuw ingesteld.",
+		"message_timeout": "Het koppelen duurde te lang, en is geannuleerd.",
+		"message_existing_device": "Apparaat reeds bekend in Homey, maar zal worden geconfigureerd.",
+		"message_configuring_device": "Apparaat gevonden, en wordt nu geconfigureerd...",
+		"message_connection_error": "Fout bij communicatie met apparaat:",
+		"message_malformed_error": "Apparaat heeft misvormde data teruggestuurd. Probeer het svp nogmaals.",
+		"message_configuration_error": "Configuratie van het apparaat mislukt. Fout: ",
+		
+		"button_next": "Volgende",
+		"button_start": "Terug naar start",
+		"button_tryagain": "Opnieuw proberen",
+		"button_trouble": "Het lukt me niet",
+		"button_resetwifi": "Wifi opnieuw instellen",
+		
+		"page_start_title": "Wireless Keypad instellen",
+		"page_start_explanation1": "De Wireless Keypad is niet een apparaat die je kant-en-klaar kunt kopen, maar in elkaar moet (laten) zetten.",
+		"page_start_explanation2": "Bezoek de <a class=\"newWindow\" href=\"https://github.com\">projectpagina op Github</a> voor instructies, en welke componenten je moet aanschaffen.<br/>De totale prijs van de Wireless Keypad ligt tussen de &euro;13 en &euro;25 (exclusief behuizing).",
+		"page_start_explanation3": "In de volgende stap gaan we je Wireless Keypad toevoegen aan je wifi netwerk.<br/>Heb je dat al gedaan? <a href=\"#\" class=\"pageButton\" rel-step=\"Keypad\">Ga dan hier verder</a>.",
+		
+		"page_connectwifi_title": "Verbinden aan wifi",
+		"page_connectwifi_explanation1": "<li>Je zult eerst je Wireless Keypad moeten verbinden aan je wifi netwerk. Let op: dit moet hetzelfde netwerk zijn als waar je Homey aan verbonden is.</li><li>Sluit je Wireless Keypad aan middels USB of batterijen. Wacht tot je een piepje hoort.</li><li>Verbind je computer, tablet of telefoon aan wifi netwerk \"Wireless Keypad config\".</li><li>Een browser zal automatisch opstarten, en verbinden met de Wireless Keypad. Dit kan tot 1 minuut duren. Maakt je browser geen verbinding? Open dan handmatig het adres <a href=\"http://192.168.4.1\" class=\"newWindow\">http://192.168.4.1</a>.</li><li>Klik op \"Configure WiFi\". Selecteer je wifi netwerk, en vul het wachtwoord van je wifi netwerk in.</li><li>Vul in het veld \"private key\" onderstaande private key in, en klik op \"Save\".</li><li>Wacht tot je computer/tablet/telefoon weer verbinding heeft met je normale wifi netwerk, of doe het handmatig.</li>",
+		"page_connectwifi_privatekey": "Private key",
+		"page_connectwifi_yourprivatekeyis": "Je private key is",
+		"page_connectwifi_copytoclipboard": "Kopieer naar klembord",
+		
+		"page_wifitrouble_title": "Wifi problemen oplossen",
+		"page_wifitrouble_explanation1": "Wanneer je de Wireless Keypad niet kunt verbinden, zijn er meerdere oorzaken:",
+		"page_wifitrouble_explanation2": "<li>Je Wireless Keypad heeft geen wifi verbinding (meer);</li><li>Je private key is gewijzigd (bijvoorbeeld omdat de app opnieuw geinstalleerd is);</li>",
+		"page_wifitrouble_explanation3": "Als je de Wireless Keypad opnieuw start (stroom eraf, en weer erop) hoor je direct een kort piepje. Als je na maximaal 60 seconden geen langere piep hoort, is je keypad <strong>niet verbonden</strong> met je wifi netwerk. Voer dan een reset uit.",
+		"page_wifitrouble_explanation4": "Reset van Wireless Keypad",
+		"page_wifitrouble_explanation5": "Door een reset uit te voeren kun je de Wireless Keypad opnieuw verbinden met je wifi netwerk, en kun je de private key opnieuw invoeren.",
+		"page_wifitrouble_explanation6": "<li>Voer de code \"73738\" in, gevolgd door een hekje.</li><li>Je zult meerdere piepjes horen die bevestigen dat de reset is uitgevoerd.</li><li>Klik hieronder op de knop \"Opnieuw proberen\" om de stappen te volgen om je Wireless Keypad opnieuw in te stellen.</li>",
+		
+		"page_keypad_title": "Keypad instellen",
+		"page_keypad_explanation1": "<li>Voer de code \"46639\" in, gevolgd door een hekje.</li><li>Je zult een piep horen, die elke 3 seconden zal worden herhaald. Bij elke piep zal de Wireless Keypad een bericht sturen naar Homey.</li><li>Klik op de knop \"Volgende\" om Homey te laten luisteren naar deze berichten.</li>",
+		"page_keypad_explanation2": "NB: je kunt de berichten vanuit de Wireless Keypad laten stoppen door een hekje in te toetsen.",
+		
+		"page_keypadtrouble_title": "Keypad problemen oplossen",
+		"page_keypadtrouble_explanation1": "Als je Wireless Keypad is verbonden aan je wifi netwerk, maar je kunt je keypad niet koppelen aan je Homey, is het mogelijk dat je netwerk de berichten tegen houd tussen de keypad en je Homey.",
+		"page_keypadtrouble_explanation2": "Netwerkproblemen oplossen",
+		"page_keypadtrouble_explanation3": "<li>Zorg ervoor dat je firewall of router het toestaat dat \"UDP multicasting\" wordt toegestaan.</li><li>Zet UDP poort 60505 open in je firewall, echter alleen binnen je netwerk.</li><li>Zet TCP poort 60506 open in je firewall, echter alleen binnen je netwerk.</li>",
+		
+		"page_startpairing_title": "Koppelen",
+		"page_startpairing_explanation": "Het pairing proces is gestart. Hieronder zal de voortgang worden getoond."
+	}
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+    <head>
+		<script type="text/javascript" src="/manager/webserver/assets/js/jquery.js"></script>
+		<script type="text/javascript" src="../../../assets/client-common.js"></script>
+		<script type="text/javascript" src="client-pair.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../../assets/styles.css" media="screen" />
+    </head>
+    <body>
+		<div class="page pageStart" rel-title="">
+			<p rel-localized="pair.page_start_explanation1"></p>
+			<p rel-localized="pair.page_start_explanation2"></p>
+			<p rel-localized="pair.page_start_explanation3"></p>
+			<div class="bottomButtonBar">
+				<button class="pageButton floatRight" rel-step="ConnectWifi" rel-localized="pair.button_next"></button>
+			</div>
+		</div>
+		<div class="page pageConnectWifi" rel-title="">
+			<ol rel-localized="pair.page_connectwifi_explanation1"></ol>
+			<h2 rel-localized="pair.page_connectwifi_privatekey"></h2>
+			<p id="privateKeyContainer">
+				<span rel-localized="pair.page_connectwifi_yourprivatekeyis"></span>
+				<span id="privateKey" style="font-weight:bold;"></span>
+				<button class="copyToClipboard" rel-description="Je private key" rel-selector="#privateKey" style="display:inline-block;font-size:0.8em;" rel-localized-for="title" rel-localized="pair.page_connectwifi_copytoclipboard"></button>
+			</p>
+			
+			<div class="bottomButtonBar">
+				<button class="pageButton floatLeft" rel-step="Start" rel-localized="pair.button_start"></button>
+				<button class="pageButton floatLeft" rel-step="WifiTrouble" rel-localized="pair.button_trouble"></button>
+				<button class="pageButton floatRight" rel-step="Keypad" rel-localized="pair.button_next"></button>
+			</div>
+		</div>
+		<div class="page pageWifiTrouble" rel-title="">
+			<p rel-localized="pair.page_wifitrouble_explanation1"></p>
+			<ul rel-localized="pair.page_wifitrouble_explanation2"></ul>
+			<p rel-localized="pair.page_wifitrouble_explanation3"></p>
+			<h2 rel-localized="pair.page_wifitrouble_explanation4"></h2>
+			<p rel-localized="pair.page_wifitrouble_explanation5"></p>
+			<ol rel-localized="pair.page_wifitrouble_explanation6"></ol>
+			<div class="bottomButtonBar">
+				<button class="pageButton floatLeft" rel-step="Start" rel-localized="pair.button_start"></button>
+				<button class="pageButton floatRight" rel-step="ConnectWifi" rel-localized="pair.button_tryagain"></button>
+			</div>
+		</div>
+		<div class="page pageKeypad" rel-title="">
+			<ol rel-localized="pair.page_keypad_explanation1"></ol>
+			<p rel-localized="pair.page_keypad_explanation2"></p>
+			<div class="bottomButtonBar">
+				<button class="pageButton floatLeft" rel-step="Start" rel-localized="pair.button_start"></button>
+				<button class="pageButton floatLeft" rel-step="KeypadTrouble" rel-localized="pair.button_trouble"></button>
+				<button class="pageButton floatRight" rel-step="StartPairing" rel-localized="pair.button_next"></button>
+			</div>
+		</div>
+		<div class="page pageKeypadTrouble" rel-title="">
+			<p rel-localized="pair.page_keypadtrouble_explanation1"></p>
+			<h2 rel-localized="pair.page_keypadtrouble_explanation2"></h2>
+			<ol rel-localized="pair.page_keypadtrouble_explanation3"></ol>
+			<div class="bottomButtonBar">
+				<button class="pageButton floatLeft" rel-step="Start" rel-localized="pair.button_start"></button>
+				<button class="pageButton floatLeft" rel-step="WifiTrouble" rel-localized="pair.button_resetwifi"></button>
+				<button class="pageButton floatRight" rel-step="Keypad" rel-localized="pair.button_tryagain"></button>
+			</div>
+		</div>
+		<div class="page pageStartPairing" rel-title="">
+			<p rel-localized="pair.page_startpairing_explanation"></p>
+			<ul id="statusList"></ul>
+			<div class="loadingIcon"></div>
+		</div>
+    </body>
+</html>
