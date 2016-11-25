@@ -1,8 +1,6 @@
 "use strict";
-var net = require('net');
 var dgram = require('dgram');
 var ip = require('ip');
-var http = require('http');
 var strftime = require('strftime');
 var WirelessKeypad = require('./../../lib/wireless-keypad.js');
 
@@ -58,7 +56,7 @@ module.exports.deleted = function(deviceData, callback ) {
 		if (_devices[idx].deviceId == deviceData.id)
 			idxToDelete = idx;
 	if (idxToDelete >= 0)
-		delete _devices[idxToDelete];
+		_devices.splice(idxToDelete, 1);
 	callback(null, true);
 }
 
@@ -72,12 +70,12 @@ module.exports.pair = function(socket) {
     	// Return true to let front-end know we're starting
 		callback(null, true);
 		
-		// Set up UDP multicast listener for new device pairing
-		module.exports.startUdpBroadcastListening(socket);
-		
 		// Create new device ID
 		var newDeviceId = _wirelessKeypad.createGuid();
 		if (DEBUG) Homey.log('Start pairing. New device ID: '+newDeviceId);
+		
+		// Set up UDP multicast listener for new device pairing
+		module.exports.startUdpBroadcastListening(socket, newDeviceId, true);
 		
 		// Set time-out for pairing (one minute)
 		setTimeout(function(){
@@ -85,13 +83,8 @@ module.exports.pair = function(socket) {
 				module.exports.stopUdpBroadcastListening();
 				socket.emit('status', {busy:false, error:true, message:__('pair.message_timeout')});
 			}
-		}, 60 * 1000);
-		
-		// Execute when UDP broadcast message has been received
-		_socketMulticastReceive.on('message', function(receivedMessage, returnInfo) {
-			module.exports.handleReceivedUdpBroadcastMessage(newDeviceId, receivedMessage, returnInfo, socket);
-		});
-    });
+		}, 5 * 60 * 1000);
+	});
     
     socket.on('disconnect', function(){
     	module.exports.stopUdpBroadcastListening();
@@ -132,7 +125,7 @@ module.exports.handleReceivedUdpBroadcastMessage = function(newDeviceId, receive
 			var secondsSinceEpoch = _wirelessKeypad.secondsSinceEpoch();
 			
 			// perform HTTP request for binding
-			_wirelessKeypad.performHttpRequest(deviceIpAddress, '/bind', 60506, 'POST', JSON.stringify({
+			_wirelessKeypad.performHttpRequest(deviceIpAddress, '/bind', TCP_PORT_REQUEST, 'POST', JSON.stringify({
 				type: 'bind',
 				homeyIpAddress: ip.address(),
 				homeySecondsSinceEpoch: secondsSinceEpoch,
@@ -141,7 +134,8 @@ module.exports.handleReceivedUdpBroadcastMessage = function(newDeviceId, receive
 			}), function(err, jsonResponseText){
 				if (err) {
 					if (DEBUG) Homey.log('Error in HTTP request: ' + err);
-					socket.emit('status', {busy:false, error:true, message:__('pair.message_connection_error')+' '+err});
+					socket.emit('status', {busy:true, error:true, message:__('pair.message_connection_error')+' '+err});
+					module.exports.startUdpBroadcastListening(socket, newDeviceId, false);
 				} else {
 					if (DEBUG) Homey.log('Received HTTP response from device: ' + jsonResponseText);
 					
@@ -304,6 +298,7 @@ module.exports.requestCheckIn = function(device) {
 
 // Check for device availability every minute
 module.exports.checkDevices = function() {
+	if (module.exports.isListeningToUdpBroadcast()) return;
 	if (DEBUG) Homey.log('Checking device availability...');
 	var secondsSinceEpoch = _wirelessKeypad.secondsSinceEpoch();
 	
@@ -360,13 +355,19 @@ module.exports.triggerDevice = function(deviceId, triggerName, state) {
 }
 
 // Set up UDP multicast listener for new device pairing
-module.exports.startUdpBroadcastListening = function(socket) {
+module.exports.startUdpBroadcastListening = function(socket, newDeviceId, isInitial) {
 	var broadcastIpAddress = ip.or(ip.address(), '0.0.0.255');
 	if (DEBUG) Homey.log('Listening to UDP broadcasts on IP address ' + broadcastIpAddress);
 	_socketMulticastReceive = dgram.createSocket('udp4');
 	_socketMulticastReceive.bind(UDP_PORT_RECEIVE, broadcastIpAddress, function(){ _socketMulticastReceive.setBroadcast(true); });
+	
+	// Execute when UDP broadcast message has been received
+	_socketMulticastReceive.on('message', function(receivedMessage, returnInfo) {
+		module.exports.handleReceivedUdpBroadcastMessage(newDeviceId, receivedMessage, returnInfo, socket);
+	});
 	_listenToUdpBroadcast = true;
-	socket.emit('status', {busy:true, error:false, message:__('pair.message_start_pairing')});
+	if (isInitial)
+		socket.emit('status', {busy:true, error:false, message:__('pair.message_start_pairing')});
 }
 
 // Check if driver is listening to UDP broadcasts

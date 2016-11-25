@@ -1,14 +1,15 @@
 "use strict";
 var WirelessKeypad = require('./../../lib/wireless-keypad.js');
-var _wirelessKeypad = new WirelessKeypad();
+var http = require('http');
 var DEBUG = true;
 
 // Initialize app
-module.exports.init = function(){};
+module.exports.init = function(){
+};
 
 // Handle autocomplete params
-Homey.manager('flow').on('trigger.access_code.keyname.autocomplete', function(callback, args){ callback(null, _wirelessKeypad.getAccessKeysForAutocomplete()); });
-Homey.manager('flow').on('action.buzzer.buzzertype.autocomplete', function(callback, args){ callback(null, _wirelessKeypad.getBuzzerTypesForAutocomplete()); });
+Homey.manager('flow').on('trigger.access_code.keyname.autocomplete', function(callback, args){ callback(null, new WirelessKeypad().getAccessKeysForAutocomplete()); });
+Homey.manager('flow').on('action.buzzer.buzzertype.autocomplete', function(callback, args){ callback(null, new WirelessKeypad().getBuzzerTypesForAutocomplete()); });
 
 // Perform buzzer avtion
 Homey.manager('flow').on('action.buzzer', function(callback, args){

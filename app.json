@@ -9,8 +9,8 @@
 	},
 	"description":
 	{
-		"en": "Wireless Keypad system using an ESP device.",
-		"nl": "Wireless Keypad systeem middels een ESP apparaat."
+		"en": "Wireless Keypad system using an NodeMCU board.",
+		"nl": "Wireless Keypad systeem middels een NodeMCU board."
 	},
 	"author":
 	{

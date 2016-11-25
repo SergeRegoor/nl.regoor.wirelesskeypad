@@ -17,9 +17,9 @@ module.exports = [
 				errorMessage: ''
 			};
 			try {
-				var _wirelessKeypad = new WirelessKeypad();
+				var wirelessKeypad = new WirelessKeypad();
 				var driver = Homey.manager('drivers').getDriver('wirelesskeypad-wifi');
-				var secondsSinceEpoch = _wirelessKeypad.secondsSinceEpoch();
+				var secondsSinceEpoch = wirelessKeypad.secondsSinceEpoch();
 				result.homeySecondsSinceEpoch = secondsSinceEpoch;
 				
 				// Get parameters
@@ -35,13 +35,13 @@ module.exports = [
 				// Get device and check hash
 				var device = driver.getDeviceById(deviceId);
 				if (device == null) throw new Error('Could not find device');
-				if (hash != _wirelessKeypad.createHash(device.settings.ipAddress, device.settings.macAddress, _wirelessKeypad.getPrivateKey(), deviceTime)) throw new Error('Hash does not match.');
+				if (hash != wirelessKeypad.createHash(device.settings.ipAddress, device.settings.macAddress, wirelessKeypad.getPrivateKey(), deviceTime)) throw new Error('Hash does not match.');
 				
 				// Handle check-in
 				driver.setLastCheckIn(deviceId, deviceTime);
 				result.successful = true;
 				result.checkInTimeOutInSeconds = device.settings.checkInTimeOutMinutes * 60;
-				result.hash = _wirelessKeypad.createHash(device.settings.ipAddress, device.settings.macAddress, _wirelessKeypad.getPrivateKey(), secondsSinceEpoch);
+				result.hash = wirelessKeypad.createHash(device.settings.ipAddress, device.settings.macAddress, wirelessKeypad.getPrivateKey(), secondsSinceEpoch);
 				if (DEBUG) Homey.log('Successfully processed device check-in for device ' + deviceId + '.');
 			} catch(exception) {
 				result.successful = false;
@@ -65,9 +65,9 @@ module.exports = [
 				errorMessage: ''
 			};
 			try {
-				var _wirelessKeypad = new WirelessKeypad();
+				var wirelessKeypad = new WirelessKeypad();
 				var driver = Homey.manager('drivers').getDriver('wirelesskeypad-wifi');
-				var secondsSinceEpoch = _wirelessKeypad.secondsSinceEpoch();
+				var secondsSinceEpoch = wirelessKeypad.secondsSinceEpoch();
 				
 				// Get parameters
 				var deviceId = args.query.deviceid;
@@ -84,7 +84,7 @@ module.exports = [
 				// Get device and check hash
 				var device = driver.getDeviceById(deviceId);
 				if (device == null) throw new Error('Could not find device');
-				if (hash != _wirelessKeypad.createHash(device.settings.ipAddress, device.settings.macAddress, _wirelessKeypad.getPrivateKey(), deviceTime)) throw new Error('Hash does not match.');
+				if (hash != wirelessKeypad.createHash(device.settings.ipAddress, device.settings.macAddress, wirelessKeypad.getPrivateKey(), deviceTime)) throw new Error('Hash does not match.');
 				
 				//Check if device is active
 				if (!device.settings.enableDevice) throw new Error('Device is disabled.');
@@ -96,7 +96,7 @@ module.exports = [
 				if (secondsOffset > 10) throw new Error('More than 10 seconds in time difference, possible tampering.');
 				
 				// Check access key
-				var accessKey = _wirelessKeypad.getAccessKeyByEnteredCode(enteredCode);
+				var accessKey = wirelessKeypad.getAccessKeyByEnteredCode(enteredCode);
 				if ((accessKey == null) || ((accessKey != null) && !accessKey.isActive)) {
 					isInvalidCode = true;
 					throw new Error('Invalid access key');
