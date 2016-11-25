@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/e9bd268321e6e3cfcebcd633054b3a4b2c4db578/strftime/strftime.d.ts",
+    "raw": "registry:dt/strftime#0.9.2+20160914125856",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/e9bd268321e6e3cfcebcd633054b3a4b2c4db578/strftime/strftime.d.ts"
+  }
+}
